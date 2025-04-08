@@ -1,7 +1,20 @@
 <!doctype html>
-<title>Hello from Flask</title>
-<body style="background: {{ color }};"></body>
-<div style="color: #e4e4e4;
+<title>Hello from J. Gibson</title>
+<style>
+  body {
+      background-image: url("{{ background_image }}");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+  }
+  /* Additional styling for the content */
+  .container {
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.7); /* Optional: for better readability */
+  }
+</style>
+<!-- <body style="background: {{ color }};"></body> -->
+<div style="
     text-align:  center;
     height: 90px;
     vertical-align:  middle;">

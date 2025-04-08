@@ -3,12 +3,25 @@
 <head>
 	<title>Get Employee Information</title>
 </head>
+<style>
+	body {
+		background-image: url("{{ background_image }}");
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+	/* Additional styling for the content */
+	.container {
+		padding: 20px;
+		background-color: rgba(255, 255, 255, 0.7); /* Optional: for better readability */
+	}
+</style>
 <center>
 	<font color="black" size="5" style="font-family: avenir">
 
 		<h1 style="color: DodgerBlue">Employee Information</h1>
 
-		<body style="background: {{ color }};">
+		<body>
 
 			<form action="/fetchdata" autocomplete="on" method="POST">
 
