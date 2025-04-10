@@ -16,38 +16,7 @@ COLOR_FROM_ENV = os.environ.get('APP_COLOR') or "lime"
 DBPORT = int(os.environ.get("DBPORT"))
 
 # Amazon S3 Bucket URL (replace with your actual S3 URL or image path)
-S3_BUCKET_URL = "https://clo835-project-s3.s3.us-east-1.amazonaws.com/JGibson.jpg" # Check URL after creation
-
-# s3 = boto3.client('s3')
-
-# bucket_name = 'clo835-project-s3'
-# object_key = 'JGibson.jpg'
-
-# response = s3.get_object(Bucket=bucket_name, Key=object_key)
-
-# image_data = response['Body'].read()
-
-# with open('downloaded_test.jpg', 'wb') as f:
-#     f.write(image_data)
-
-# print("Image downloaded successfully!")
-
-# TEST CODE
-
-# Retrieve the S3 URL from the environment variable
-# s3_image_url = os.getenv('S3_BUCKET_URL')
-# s3_image_url = S3_BUCKET_URL
-
-# # Example: Fetch the image from S3 using requests
-# response = requests.get(s3_image_url)
-
-# if response.status_code == 200:
-#     with open('JGibson.jpg', 'wb') as f:
-#         f.write(response.content)
-# else:
-#     print(f"Failed to fetch image: {response.status_code}")
-
-# TEST CODE END
+S3_BUCKET_URL = os.environ.get('BACKGROUND_IMAGE_URL') or "https://clo835-project-s3.s3.us-east-1.amazonaws.com/JGibson.jpg"
 
 # Create a connection to the MySQL database
 db_conn = connections.Connection(
