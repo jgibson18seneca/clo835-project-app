@@ -54,7 +54,7 @@ jobs:
         docker ps
 
 
-        export DBHOST=127.0.0.1
+        export DBHOST=172.17.0.2
         export DBPORT=3306
         export DATABASE=employees
         export DBNAME=employees
@@ -71,7 +71,7 @@ jobs:
         sleep 10
         
         # Test if app is functioning
-        curl localhost:81 -vvv
+        curl 172.17.0.2:81 -vvv
 
         # Push images when successful
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:app-v$IMAGE_TAG
