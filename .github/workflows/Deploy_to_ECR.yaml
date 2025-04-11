@@ -38,7 +38,11 @@ jobs:
         # Docker build command
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:app-v$IMAGE_TAG -f Dockerfile .
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:db-v$IMAGE_TAG -f Dockerfile_mysql .
+
+        # Create network
+         docker network create -d bridge --subnet 172.18.0.0/24 --gateway 172.18.0.1 my_network
         
+        docker network ls
         sleep 10
 
         export DBPWD=wordpass
@@ -46,10 +50,11 @@ jobs:
 
         # Deploy database
         docker run -d --name db -e MYSQL_ROOT_PASSWORD=wordpass $ECR:db-v$IMAGE_TAG
+        sleep 10
         docker ps
-        sleep 15
 
-        export DBHOST=172.18.0.2
+
+        export DBHOST=172.17.0.2
         export DBPORT=3306
         export DATABASE=employees
         export DBNAME=employees
@@ -62,6 +67,7 @@ jobs:
         docker ps
         docker images
         echo "Pause for 10 seconds to ensure container is deployed"
+        docker inspect db
         sleep 10
 
         # Push images when successful
