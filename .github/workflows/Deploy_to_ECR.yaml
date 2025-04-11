@@ -7,7 +7,7 @@ on:
 jobs:
   
   build:
-    
+    if: ${{ secrets.ENABLE_DEPLOY == 'true' }}    
     name: Build Image
     runs-on: ubuntu-latest
 
