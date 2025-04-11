@@ -15,9 +15,8 @@ DATABASE = os.environ.get("DATABASE") or "employees"
 COLOR_FROM_ENV = os.environ.get('APP_COLOR') or "lime"
 DBPORT = int(os.environ.get("DBPORT"))
 
-# Amazon S3 Bucket URL (replace with your actual S3 URL or image path)
-# S3_BUCKET_URL = "https://clo835-project-s3.s3.us-east-1.amazonaws.com/JGibson.jpg" # Check URL after creation
 S3_BUCKET_URL = os.environ.get('BACKGROUND_IMAGE_URL', "https://clo835-project-s3.s3.us-east-1.amazonaws.com/JGibson.jpg")
+HEADER = "Joe Gibson, Matthew Gibson, Yash Gujral"
 
 # Create a connection to the MySQL database
 db_conn = connections.Connection(
@@ -34,12 +33,12 @@ table = 'employee'
 @app.route("/", methods=['GET', 'POST'])
 def home():
     # Pass S3 URL instead of color
-    return render_template('addemp.html', background_image=S3_BUCKET_URL)
+    return render_template('addemp.html', background_image=S3_BUCKET_URL, team_title=HEADER)
 
 @app.route("/about", methods=['GET', 'POST'])
 def about():
     # Pass S3 URL instead of color
-    return render_template('about.html', background_image=S3_BUCKET_URL)
+    return render_template('about.html', background_image=S3_BUCKET_URL, team_title=HEADER)
 
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
@@ -60,7 +59,7 @@ def AddEmp():
     finally:
         cursor.close()
 
-    return render_template('addempoutput.html', name=emp_name, background_image=S3_BUCKET_URL)
+    return render_template('addempoutput.html', name=emp_name, background_image=S3_BUCKET_URL, team_title=HEADER)
 
 @app.route("/getemp", methods=['GET', 'POST'])
 def GetEmp():
@@ -91,7 +90,7 @@ def FetchData():
 
     return render_template("getempoutput.html", id=output["emp_id"], fname=output["first_name"],
                            lname=output["last_name"], interest=output["primary_skills"], location=output["location"],
-                           background_image=S3_BUCKET_URL)
+                           background_image=S3_BUCKET_URL, team_title=HEADER)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=81, debug=True)
