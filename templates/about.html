@@ -1,0 +1,33 @@
+<!doctype html>
+<title>Hello from J. Gibson</title>
+<style>
+  body {
+      background-image: url("{{ background_image }}");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+  }
+  /* Additional styling for the content */
+  .container {
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.7); /* Optional: for better readability */
+  }
+</style>
+<!-- <body style="background: {{ color }};"></body> -->
+<div style="
+    text-align:  center;
+    height: 90px;
+    vertical-align:  middle;">
+{% if name %}
+  <h1>Hello from {{ name }}!</h1>
+{% else %}
+  <h1>Hello From CLO835!</h1>
+{% endif %}
+
+  {% if contents %}
+  <textarea rows="10" cols="50">
+    {{ contents }}
+  </textarea>
+  {% endif %}
+
+</div>
