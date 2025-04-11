@@ -50,10 +50,11 @@ jobs:
 
         # Deploy database
         docker run -d --name db -e MYSQL_ROOT_PASSWORD=wordpass $ECR:db-v$IMAGE_TAG
+        sleep 10
         docker ps
-        sleep 15
 
-        export DBHOST=172.18.0.2
+
+        export DBHOST=127.0.0.1
         export DBPORT=3306
         export DATABASE=employees
         export DBNAME=employees
@@ -66,6 +67,7 @@ jobs:
         docker ps
         docker images
         echo "Pause for 10 seconds to ensure container is deployed"
+        docker inspect db
         sleep 10
         
         # Test if app is functioning
