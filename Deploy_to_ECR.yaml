@@ -38,11 +38,7 @@ jobs:
         # Docker build command
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:app-v$IMAGE_TAG -f Dockerfile .
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:db-v$IMAGE_TAG -f Dockerfile_mysql .
-
-        # Create network
-         docker network create -d bridge --subnet 172.18.0.0/24 --gateway 172.18.0.1 my_network
         
-        docker network ls
         sleep 10
 
         export DBPWD=wordpass
