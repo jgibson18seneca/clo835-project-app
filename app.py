@@ -16,7 +16,8 @@ COLOR_FROM_ENV = os.environ.get('APP_COLOR') or "lime"
 DBPORT = int(os.environ.get("DBPORT"))
 
 # Amazon S3 Bucket URL (replace with your actual S3 URL or image path)
-S3_BUCKET_URL = os.environ.get('BACKGROUND_IMAGE_URL') or "https://clo835-project-s3.s3.us-east-1.amazonaws.com/JGibson.jpg"
+# S3_BUCKET_URL = "https://clo835-project-s3.s3.us-east-1.amazonaws.com/JGibson.jpg" # Check URL after creation
+S3_BUCKET_URL = os.environ.get('BACKGROUND_IMAGE_URL', "https://clo835-project-s3.s3.us-east-1.amazonaws.com/JGibson.jpg")
 
 # Create a connection to the MySQL database
 db_conn = connections.Connection(
