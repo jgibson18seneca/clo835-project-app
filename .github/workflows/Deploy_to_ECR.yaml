@@ -71,7 +71,7 @@ jobs:
         sleep 10
         
         # Test if app is functioning
-        curl 172.17.0.2:81 -vvv
+        curl localhost:81
 
         # Push images when successful
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:app-v$IMAGE_TAG
